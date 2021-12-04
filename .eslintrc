@@ -4,6 +4,9 @@
       "indent": ["error", "tab"],
       "no-tabs": ["error", {"allowIndentationTabs": true}]
     },
+    "globals": {
+      "window": true
+    },
     "extends": "airbnb",
     "parserOptions": {
       "ecmaVersion": 8,

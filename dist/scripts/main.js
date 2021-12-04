@@ -15,7 +15,7 @@
   \************************************************/
 /***/ (() => {
 
-eval("var laptopSpecs = function laptopSpecs() {};\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  laptopSpecs();\n});\n\n//# sourceURL=webpack://laptop-specs/./src/scripts/components/laptop-specs.js?");
+eval("/* eslint-disable */\nvar laptopSpecs = function laptopSpecs() {\n  var specs = window.Computer.specs;\n  var clickableItems = document.querySelectorAll('.clickable');\n  var selectedItems = document.querySelectorAll('.selected');\n  var orderTotal = null;\n\n  var calculateTotal = function calculateTotal(selectedItems) {\n    orderTotal = 0;\n    selectedItems.forEach(function (item) {\n      orderTotal += parseInt(item.dataset.price);\n    });\n    document.querySelector('.summary-window__total').textContent = \"Total: \\xA3\".concat(orderTotal);\n  };\n\n  var onClickItem = function onClickItem(item) {\n    if (item.classList.contains('buy-button')) {\n      alert('Laptop succesfully purchased, heres your order summary');\n      return;\n    }\n\n    var parent = item.parentElement;\n    var category = parent.previousElementSibling.textContent;\n    parent.querySelector('.selected').classList.remove('selected');\n    item.classList.add('selected');\n    selectedItems = document.querySelectorAll('.selected');\n    calculateTotal(selectedItems);\n  };\n\n  clickableItems.forEach(function (item) {\n    item.addEventListener('click', function () {\n      onClickItem(item);\n    });\n  });\n  calculateTotal(selectedItems);\n};\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  laptopSpecs();\n});\n\n//# sourceURL=webpack://laptop-specs/./src/scripts/components/laptop-specs.js?");
 
 /***/ }),
 
