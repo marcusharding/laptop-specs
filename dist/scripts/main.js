@@ -15,7 +15,7 @@
   \************************************************/
 /***/ (() => {
 
-eval("jQuery(function () {\n  total = Computer.total;\n  specs = Computer.specs;\n  $('.clickable').on('click', function (e) {\n    if ($(e.currentTarget).hasClass('buyButton')) {\n      // submit the form here\n      return;\n    }\n\n    var cat = $(this).parent().prev().text();\n    console.log(cat);\n    $(this).parent().find('.selected').removeClass('selected');\n    $(this).addClass('selected');\n\n    if (specs[cat].length != 0) {\n      total = total - specs[cat][1];\n    }\n\n    specs[cat] = [$(this).find('.component-option__name').text(), parseInt($(this).find('.component-option__price').text().substr(1), 10)];\n    total = total + parseInt($(this).find('.component-option__price').text().substr(1), 10);\n    $('.chosen-specs__spec-list').empty();\n    $('.chosen-specs__spec-list').append('<li class=\"spec-list__spec\">' + specs.Screen[0] + '</li>');\n    $('.chosen-specs__spec-list').append('<li class=\"spec-list__spec\">' + specs.CPU[0] + '</li>');\n    $('.chosen-specs__spec-list').append('<li class=\"spec-list__spec\">' + specs.Storage[0] + '</li>');\n    $('.chosen-specs__spec-list').append('<li class=\"spec-list__spec\">' + specs.Memory[0] + '</li>');\n    $('.chosen-specs__spec-list').append('<li class=\"spec-list__spec\">' + specs.Graphics[0] + '</li>');\n    $('.summary-window__total').text('Total: £' + total);\n  });\n});\n\n//# sourceURL=webpack://laptop-specs/./src/scripts/components/laptop-specs.js?");
+eval("var laptopSpecs = function laptopSpecs() {};\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  laptopSpecs();\n});\n\n//# sourceURL=webpack://laptop-specs/./src/scripts/components/laptop-specs.js?");
 
 /***/ }),
 
