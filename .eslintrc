@@ -1,0 +1,10 @@
+{
+    "parser": "@babel/eslint-parser",
+    "rules": {
+      "indent": 1
+    },
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "requireConfigFile": false
+    }
+}

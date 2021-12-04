@@ -7,6 +7,7 @@ jQuery(function () {
             return;
         }
         var cat = $(this).parent().prev().text();
+        console.log(cat);
         $(this).parent().find('.selected').removeClass('selected');
         $(this).addClass('selected');
         if (specs[cat].length != 0) {

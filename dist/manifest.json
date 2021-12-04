@@ -1,0 +1,7 @@
+{
+  "main.css": "dist/laptop-specs/styles/main.css",
+  "main.js": "dist/laptop-specs/scripts/main.js",
+  "scripts/vendor/jquery-3.2.0.min.js": "dist/laptop-specs/scripts/vendor/jquery-3.2.0.min.js",
+  "scripts/vendor/modernizr-2.8.3.min.js": "dist/laptop-specs/scripts/vendor/modernizr-2.8.3.min.js",
+  "index.html": "dist/laptop-specs/index.html"
+}
