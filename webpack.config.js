@@ -72,4 +72,13 @@ module.exports = {
 			],
 		}),
 	],
+	devServer: {
+		static: {
+			directory: path.join(__dirname, 'dist'),
+		},
+		compress: true,
+		liveReload: true,
+		watchFiles: ['index.html', 'src/**/*.js', 'src/**/*.sass'],
+		port: 8080,
+	},
 };
