@@ -33,7 +33,7 @@ const laptopSpecs = () => {
 		container.appendChild(createNewSummaryItem(specs.Graphics[0]));
 		specList.replaceWith(container);
 
-		calculateTotal(selectedItems);
+		calculateTotal();
 	};
 
 	const onClickItem = (item) => {
@@ -56,7 +56,7 @@ const laptopSpecs = () => {
 		item.addEventListener('click', () => { onClickItem(item); });
 	});
 
-	calculateTotal(selectedItems);
+	calculateTotal();
 };
 
 document.addEventListener('DOMContentLoaded', () => {

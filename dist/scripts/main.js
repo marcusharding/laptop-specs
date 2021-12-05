@@ -1,43 +1,69 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/scripts/components/laptop-specs.js":
-/*!************************************************!*\
-  !*** ./src/scripts/components/laptop-specs.js ***!
-  \************************************************/
+/***/ 205:
 /***/ (() => {
 
-eval("var laptopSpecs = function laptopSpecs() {\n  var specs = window.Computer.specs;\n  var clickableItems = document.querySelectorAll('.clickable');\n  var selectedItems = document.querySelectorAll('.selected');\n  var orderTotal = null;\n\n  var calculateTotal = function calculateTotal() {\n    orderTotal = 0;\n    selectedItems.forEach(function (item) {\n      orderTotal += parseInt(item.dataset.price, 10);\n    });\n    document.querySelector('.summary-window__total').textContent = \"Total: \\xA3\".concat(orderTotal);\n  };\n\n  var createNewSummaryItem = function createNewSummaryItem(innerHtml) {\n    var node = document.createElement('li');\n    node.className = 'spec-list__spec';\n    node.innerHTML = innerHtml;\n    return node;\n  };\n\n  var updateOrderSummary = function updateOrderSummary() {\n    var specList = document.querySelector('.chosen-specs__spec-list');\n    var container = document.createElement('ul');\n    container.className = 'chosen-specs__spec-list list--no-style';\n    container.appendChild(createNewSummaryItem(specs.Screen[0]));\n    container.appendChild(createNewSummaryItem(specs.CPU[0]));\n    container.appendChild(createNewSummaryItem(specs.Storage[0]));\n    container.appendChild(createNewSummaryItem(specs.Memory[0]));\n    container.appendChild(createNewSummaryItem(specs.Graphics[0]));\n    specList.replaceWith(container);\n    calculateTotal(selectedItems);\n  };\n\n  var onClickItem = function onClickItem(item) {\n    if (item.classList.contains('buy-button')) {\n      alert('Laptop succesfully purchased, heres your order summary');\n      return;\n    }\n\n    var parent = item.parentElement;\n    var category = parent.previousElementSibling.textContent;\n    parent.querySelector('.selected').classList.remove('selected');\n    item.classList.add('selected');\n    selectedItems = document.querySelectorAll('.selected');\n    specs[category] = [item.querySelector('.component-option__name').textContent, parseInt(item.querySelector('.component-option__price').textContent.substr(1), 10)];\n    updateOrderSummary();\n  };\n\n  clickableItems.forEach(function (item) {\n    item.addEventListener('click', function () {\n      onClickItem(item);\n    });\n  });\n  calculateTotal(selectedItems);\n};\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  laptopSpecs();\n});\n\n//# sourceURL=webpack://laptop-specs/./src/scripts/components/laptop-specs.js?");
+var laptopSpecs = function laptopSpecs() {
+  var specs = window.Computer.specs;
+  var clickableItems = document.querySelectorAll('.clickable');
+  var selectedItems = document.querySelectorAll('.selected');
+  var orderTotal = null;
 
-/***/ }),
+  var calculateTotal = function calculateTotal() {
+    orderTotal = 0;
+    selectedItems.forEach(function (item) {
+      orderTotal += parseInt(item.dataset.price, 10);
+    });
+    document.querySelector('.summary-window__total').textContent = "Total: \xA3".concat(orderTotal);
+  };
 
-/***/ "./src/scripts/index.js":
-/*!******************************!*\
-  !*** ./src/scripts/index.js ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+  var createNewSummaryItem = function createNewSummaryItem(innerHtml) {
+    var node = document.createElement('li');
+    node.className = 'spec-list__spec';
+    node.innerHTML = innerHtml;
+    return node;
+  };
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_laptop_specs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/laptop-specs */ \"./src/scripts/components/laptop-specs.js\");\n/* harmony import */ var _components_laptop_specs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_laptop_specs__WEBPACK_IMPORTED_MODULE_0__);\n// Components\n\n\n//# sourceURL=webpack://laptop-specs/./src/scripts/index.js?");
+  var updateOrderSummary = function updateOrderSummary() {
+    var specList = document.querySelector('.chosen-specs__spec-list');
+    var container = document.createElement('ul');
+    container.className = 'chosen-specs__spec-list list--no-style';
+    container.appendChild(createNewSummaryItem(specs.Screen[0]));
+    container.appendChild(createNewSummaryItem(specs.CPU[0]));
+    container.appendChild(createNewSummaryItem(specs.Storage[0]));
+    container.appendChild(createNewSummaryItem(specs.Memory[0]));
+    container.appendChild(createNewSummaryItem(specs.Graphics[0]));
+    specList.replaceWith(container);
+    calculateTotal();
+  };
 
-/***/ }),
+  var onClickItem = function onClickItem(item) {
+    if (item.classList.contains('buy-button')) {
+      alert('Laptop succesfully purchased, heres your order summary');
+      return;
+    }
 
-/***/ "./src/styles/index.sass":
-/*!*******************************!*\
-  !*** ./src/styles/index.sass ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+    var parent = item.parentElement;
+    var category = parent.previousElementSibling.textContent;
+    parent.querySelector('.selected').classList.remove('selected');
+    item.classList.add('selected');
+    selectedItems = document.querySelectorAll('.selected');
+    specs[category] = [item.querySelector('.component-option__name').textContent, parseInt(item.querySelector('.component-option__price').textContent.substr(1), 10)];
+    updateOrderSummary();
+  };
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://laptop-specs/./src/styles/index.sass?");
+  clickableItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+      onClickItem(item);
+    });
+  });
+  calculateTotal();
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  laptopSpecs();
+});
 
 /***/ })
 
@@ -97,24 +123,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	__webpack_require__("./src/scripts/index.js");
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/styles/index.sass");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/* harmony import */ var _components_laptop_specs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(205);
+/* harmony import */ var _components_laptop_specs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_laptop_specs__WEBPACK_IMPORTED_MODULE_0__);
+// Components
+
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+// extracted by mini-css-extract-plugin
+
+})();
+
 /******/ })()
 ;
