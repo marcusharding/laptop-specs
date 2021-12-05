@@ -12,65 +12,64 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-  context: __dirname,
-  entry: ['./src/scripts/index.js', './src/styles/index.sass'],
-  output: {
-    filename: 'scripts/main.js',
-    path: path.resolve(__dirname, 'dist'),
+	context: __dirname,
+	entry: ['./src/scripts/index.js', './src/styles/index.sass'],
+	output: {
+		filename: 'scripts/main.js',
+		path: path.resolve(__dirname, 'dist'),
 		clean: true,
-    publicPath: itemDist,
-  },
+		publicPath: itemDist,
+	},
 	module: {
 		rules: [
 			{
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      },
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env'],
+					},
+				},
+			},
 			{
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {},
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'sass-loader',
-          },
-        ],
-      },
+				test: /\.(sa|sc|c)ss$/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {},
+					},
+					{
+						loader: 'css-loader',
+					},
+					{
+						loader: 'sass-loader',
+					},
+				],
+			},
 		],
 	},
 	optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin(),
-    ],
-  },
-  plugins: [
+		minimize: true,
+		minimizer: [
+			new CssMinimizerPlugin(),
+		],
+	},
+	plugins: [
 		new ESLintPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'styles/[name].css',
-      chunkFilename: '[id].css',
-    }),
-    new HtmlWebpackPlugin({
+		new MiniCssExtractPlugin({
+			filename: 'styles/[name].css',
+			chunkFilename: '[id].css',
+		}),
+		new HtmlWebpackPlugin({
 			inject: false,
-      template: 'index.html'
-    }),
-    new WebpackManifestPlugin(),
-    new CopyPlugin({
-      patterns: [
-        { from: path.resolve(__dirname, 'src/scripts/vendor/jquery-3.2.0.min.js'), to: 'scripts/vendor/[name][ext]' },
-        { from: path.resolve(__dirname, 'src/scripts/vendor/modernizr-2.8.3.min.js'), to: 'scripts/vendor/[name][ext]' }
-      ],
-    }),
-  ],
+			template: 'index.html',
+		}),
+		new WebpackManifestPlugin(),
+		new CopyPlugin({
+			patterns: [
+				{ from: path.resolve(__dirname, 'src/scripts/vendor/modernizr-2.8.3.min.js'), to: 'scripts/vendor/[name][ext]' },
+			],
+		}),
+	],
 };
