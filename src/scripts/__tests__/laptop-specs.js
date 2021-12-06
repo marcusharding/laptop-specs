@@ -1,14 +1,12 @@
-import { calculateTotal } from '../components/laptop-specs';
+import { calculateTotal, onClickItem } from '../components/laptop-specs';
 
 test('Calculating total for order summary returns an integer', () => {
-	const nodeList = [400, 300];
+	expect(typeof calculateTotal()).toBe('number');
+});
 
-	nodeList.forEach((item, i) => {
-		const node = document.createElement('li');
-		node.setAttribute('data-price', item);
-		nodeList[i] = node;
-	});
-
-	expect(typeof calculateTotal(nodeList)).toBe('number');
-	expect(calculateTotal(nodeList)).toEqual(700);
+test('Ensure nothing else is run if the buy button is clicked', () => {
+	const item = document.createElement('button');
+	item.className = 'buy-button clickable';
+	item.innerHTML = 'Buy now';
+	expect(onClickItem(item)).toBe(undefined);
 });
