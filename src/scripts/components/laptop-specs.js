@@ -1,5 +1,6 @@
-const calculateTotal = (selectedItems) => {
+const calculateTotal = () => {
 	let orderTotal = 0;
+	const selectedItems = document.querySelectorAll('.selected');
 
 	selectedItems.forEach((item) => {
 		orderTotal += parseInt(item.dataset.price, 10);
@@ -29,8 +30,8 @@ const updateOrderSummary = (specs) => {
 	specList.replaceWith(container);
 };
 
-const updateOrderTotal = (selectedItems) => {
-	document.querySelector('.summary-window__total').textContent = `Total: £${calculateTotal(selectedItems)}`;
+const updateOrderTotal = () => {
+	document.querySelector('.summary-window__total').textContent = `Total: £${calculateTotal()}`;
 };
 
 const onClickItem = (item) => {
@@ -40,7 +41,6 @@ const onClickItem = (item) => {
 	}
 
 	const { specs } = window.Computer;
-	const selectedItems = document.querySelectorAll('.selected');
 	const parent = item.parentElement;
 	const category = parent.previousElementSibling.textContent;
 
@@ -49,18 +49,17 @@ const onClickItem = (item) => {
 	specs[category] = [item.querySelector('.component-option__name').textContent, parseInt(item.querySelector('.component-option__price').textContent.substr(1), 10)];
 
 	updateOrderSummary(specs);
-	updateOrderTotal(selectedItems);
+	updateOrderTotal();
 };
 
 const laptopSpecs = () => {
 	const clickableItems = document.querySelectorAll('.clickable');
-	const selectedItems = document.querySelectorAll('.selected');
 
 	clickableItems.forEach((item) => {
 		item.addEventListener('click', () => { onClickItem(item); });
 	});
 
-	updateOrderTotal(selectedItems);
+	updateOrderTotal();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
