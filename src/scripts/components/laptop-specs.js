@@ -67,4 +67,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	laptopSpecs();
 });
 
-export default { calculateTotal, createNewSummaryItem, updateOrderSummary };
+module.exports = { createNewSummaryItem, calculateTotal, updateOrderSummary };

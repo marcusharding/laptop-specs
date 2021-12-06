@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "dev": "webpack-dev-server --config ./webpack.config.js --hot",
+    "serve": "webpack serve",
+    "dev": "webpack --watch",
     "build": "webpack --mode=production"
   },
   "keywords": [],
